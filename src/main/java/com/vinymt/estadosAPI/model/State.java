@@ -10,7 +10,7 @@ public class State implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private int id;
+	private Long id;
 	private String name;
 	private String abbreviation;
 	private Region region;
@@ -22,22 +22,26 @@ public class State implements Serializable {
 		
 	}
 	
-	public State(int id, String name, String abbreviation, Region region, double hdi, double demographicDensity,
+	public State(Long id, String name, String abbreviation, Region region, double hdi, double demographicDensity,
 			String capital) {
-		this.id = id;
-		this.name = name;
-		this.abbreviation = abbreviation;
-		this.region = region;
-		this.hdi = hdi;
-		this.demographicDensity = demographicDensity;
-		this.capital = capital;
+		this.setId(id);
+		this.setName(name);
+		this.setAbbreviation(abbreviation);
+		this.setRegion(region);
+		this.setHdi(hdi);
+		this.setDemographicDensity(demographicDensity);
+		this.setCapital(capital);
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
+		if(id < 0) {
+			throw new IllegalArgumentException("Invalid id");
+		}
+		
 		this.id = id;
 	}
 
@@ -46,6 +50,10 @@ public class State implements Serializable {
 	}
 
 	public void setName(String name) {
+		if(name.isEmpty() || name == null) {
+			throw new IllegalArgumentException("Invalid name");
+		}
+		
 		this.name = name;
 	}
 
@@ -54,6 +62,10 @@ public class State implements Serializable {
 	}
 
 	public void setAbbreviation(String abbreviation) {
+		if(abbreviation.isEmpty() || abbreviation == null) {
+			throw new IllegalArgumentException("Invalid abbreviation");
+		}
+		
 		this.abbreviation = abbreviation;
 	}
 
@@ -62,6 +74,10 @@ public class State implements Serializable {
 	}
 
 	public void setRegion(Region region) {
+		if(region == null) {
+			throw new IllegalArgumentException("Invalid Region");
+		}
+		
 		this.region = region;
 	}
 
@@ -70,6 +86,10 @@ public class State implements Serializable {
 	}
 
 	public void setHdi(double hdi) {
+		if(hdi < 0 || hdi > 1) {
+			throw new IllegalArgumentException("Invalid human development index");
+		}
+		
 		this.hdi = hdi;
 	}
 
@@ -78,6 +98,10 @@ public class State implements Serializable {
 	}
 
 	public void setDemographicDensity(double demographicDensity) {
+		if(demographicDensity < 0) {
+			throw new IllegalArgumentException("Invalid demographic density");
+		}
+		
 		this.demographicDensity = demographicDensity;
 	}
 
@@ -86,6 +110,10 @@ public class State implements Serializable {
 	}
 
 	public void setCapital(String capital) {
+		if(capital.isEmpty() || capital == null) {
+			throw new IllegalArgumentException("Invalid capital");
+		}
+		
 		this.capital = capital;
 	}
 
