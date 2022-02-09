@@ -4,16 +4,23 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "state")
 public class State implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String name;
 	private String abbreviation;
-	private Region region;
 	private double hdi;
 	private double demographicDensity;
 	private String capital;
@@ -22,22 +29,21 @@ public class State implements Serializable {
 		
 	}
 	
-	public State(Long id, String name, String abbreviation, Region region, double hdi, double demographicDensity,
+	public State(Integer id, String name, String abbreviation, double hdi, double demographicDensity,
 			String capital) {
 		this.setId(id);
 		this.setName(name);
 		this.setAbbreviation(abbreviation);
-		this.setRegion(region);
 		this.setHdi(hdi);
 		this.setDemographicDensity(demographicDensity);
 		this.setCapital(capital);
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		if(id < 0) {
 			throw new IllegalArgumentException("Invalid id");
 		}
@@ -67,18 +73,6 @@ public class State implements Serializable {
 		}
 		
 		this.abbreviation = abbreviation;
-	}
-
-	public Region getRegion() {
-		return region;
-	}
-
-	public void setRegion(Region region) {
-		if(region == null) {
-			throw new IllegalArgumentException("Invalid Region");
-		}
-		
-		this.region = region;
 	}
 
 	public double getHdi() {
