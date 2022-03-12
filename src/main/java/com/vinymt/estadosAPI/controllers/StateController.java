@@ -19,28 +19,28 @@ public class StateController {
 	@Autowired
 	private StateService service;
 	
-	@GetMapping
+	@GetMapping(produces = {"application/json", "application/xml"})
 	public ResponseEntity<List<State>> findAll() {
 		List<State> states = service.findAll();
 		
 		return ResponseEntity.ok().body(states);
 	}
 	
-	@GetMapping("/getById/{id}")
+	@GetMapping(value="/getById/{id}", produces = {"application/json", "application/xml"})
 	public ResponseEntity<State> findById(@PathVariable Long id) {
 		State state = service.findById(id);
 		
 		return ResponseEntity.ok().body(state);
 	}
 	
-	@GetMapping("/getByName/{name}")
+	@GetMapping(value="/getByName/{name}", produces = {"application/json", "application/xml"})
 	public ResponseEntity<State> findByName(@PathVariable String name) {
 		State state = service.findByName(name);
 		
 		return ResponseEntity.ok().body(state);
 	}
 	
-	@GetMapping("/getByAbbreviation/{abbreviation}")
+	@GetMapping(value="/getByAbbreviation/{abbreviation}", produces = {"application/json", "application/xml"})
 	public ResponseEntity<State> findByAbbreviation(@PathVariable String abbreviation) {
 		State state = service.findByAbbreviation(abbreviation);
 		
