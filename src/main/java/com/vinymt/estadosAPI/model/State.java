@@ -18,7 +18,7 @@ public class State implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String name;
 	private String abbreviation;
 	private double hdi;
@@ -29,7 +29,7 @@ public class State implements Serializable {
 		
 	}
 	
-	public State(Integer id, String name, String abbreviation, double hdi, double demographicDensity,
+	public State(Long id, String name, String abbreviation, double hdi, double demographicDensity,
 			String capital) {
 		this.setId(id);
 		this.setName(name);
@@ -39,11 +39,11 @@ public class State implements Serializable {
 		this.setCapital(capital);
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		if(id < 0) {
 			throw new IllegalArgumentException("Invalid id");
 		}

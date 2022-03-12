@@ -17,4 +17,16 @@ public class StateService {
 	public List<State> findAll() {
 		return repo.findAll();
 	}
+	
+	public State findById(Long id) {
+		return repo.findById(id).get();
+	}
+	
+	public State findByName(String name) {
+		return repo.findByName(name);
+	}
+	
+	public State findByAbbreviation(String abbreviation) {
+		return repo.findByAbbreviation(abbreviation);
+	}
 }
