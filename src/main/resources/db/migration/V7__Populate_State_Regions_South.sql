@@ -1,0 +1,1 @@
+UPDATE `state` SET `region_id` = 5 WHERE `id` = 1 OR `id` = 18 OR `id` = 24;

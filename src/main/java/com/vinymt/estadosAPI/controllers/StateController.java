@@ -46,4 +46,11 @@ public class StateController {
 		
 		return ResponseEntity.ok().body(state);
 	}
+	
+	@GetMapping(value="/getByRegion/{regionName}", produces = {"application/json", "application/xml"})
+	public ResponseEntity<List<State>> findByRegion(@PathVariable String regionName) {
+		List<State> state = service.findByRegion(regionName);
+		
+		return ResponseEntity.ok().body(state);
+	}
 }

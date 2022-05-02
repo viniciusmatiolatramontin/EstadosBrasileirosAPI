@@ -11,7 +11,7 @@ import com.vinymt.estadosAPI.model.State;
 @Repository
 public interface StateRepository extends JpaRepository<State, Long>{
 
-	@Query(value = "SELECT * FROM state WHERE region_id = regionId", nativeQuery = true)
+	@Query(value = "SELECT * FROM state WHERE region_id = :regionId", nativeQuery = true)
 	List<State> findByRegion(Long regionId);
 	
 	@Query(value = "SELECT * FROM state WHERE name = :name", nativeQuery = true)

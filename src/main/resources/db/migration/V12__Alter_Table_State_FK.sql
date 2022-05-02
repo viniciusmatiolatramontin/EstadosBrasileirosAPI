@@ -1,0 +1,3 @@
+ALTER TABLE `state`
+ADD CONSTRAINT `FK_REGION_COLUMN` FOREIGN KEY (`region_id`) 
+REFERENCES `region`(`id`);
