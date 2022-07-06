@@ -1,0 +1,18 @@
+language: bash
+services: docker
+before_install: 
+  - cd estados-API/
+  - echo "We are in the docker folder"
+script:
+  - docker-compose build
+before_deploy:
+  - ECHO "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker push vinymt/estados-api;
+    docker push vinymt/mysql-estados-api;
+  on:
+    branch: master
+notifications:
+  email: false
