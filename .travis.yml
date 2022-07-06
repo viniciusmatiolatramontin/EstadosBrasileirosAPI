@@ -10,6 +10,6 @@ deploy:
     docker push vinymt/estados-api;
     docker push vinymt/mysql-estados-api;
   on:
-    branch: master
+    branch: main
 notifications:
   email: false
