@@ -29,7 +29,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       working-directory: ./estados-API
-      run: mvn clean package
+      run: mvn clean package -Dmaven.test.skip=true
     - name: Docker Compose build
       run: docker compose build
     - name: Docker push
