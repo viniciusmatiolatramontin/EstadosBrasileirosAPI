@@ -35,4 +35,4 @@ jobs:
     - name: Docker push
       run: docker push vinymt/estados-api
     - name: Docker push mysql
-      run: docker push vinymt/msql-estados-api
+      run: docker push vinymt/mysql-estados-api
