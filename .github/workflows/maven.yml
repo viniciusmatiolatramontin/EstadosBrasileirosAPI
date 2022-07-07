@@ -19,7 +19,7 @@ jobs:
       uses: docker/login-action@v2.0.0
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSOWRD }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
   
     - name: Set up JDK 11
       uses: actions/setup-java@v3
